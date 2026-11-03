@@ -48,8 +48,9 @@ async function caseView(){
     try{await api({action:"message",caseNo:S.caseNo,text:e.target.text.value,type:$("#isd")&&$("#isd").checked?"decision":"msg",files});await caseView();msg("נשלח",true)}catch(er){msg(er.message)}}}
 async function profileView(){
   const j=await api({action:"judge_profile"}),p=j.profile;
-  $("#view").innerHTML=`<div class="card"><h3>${esc(p.name)} · ${esc(p.role)}</h3><p>התמחויות: ${esc(p.fields)}<br>כישורים: ${esc(p.quals)}</p></div><form class="f" id="pf" style="margin-top:16px"><label>זמינות</label><input name="a" value="${esc(p.avail)}"><button class="btn" type="submit">עדכון זמינות</button></form>`;
-  $("#pf").onsubmit=async e=>{e.preventDefault();try{await api({action:"judge_profile",avail:e.target.a.value});msg("עודכן",true)}catch(er){msg(er.message)}}}
+  $("#view").innerHTML=`<div class="card"><h3>${esc(p.name)} · ${esc(p.role)}</h3><p>התמחויות: ${esc(p.fields)}<br>כישורים: ${esc(p.quals)}</p></div><form class="f" id="pf" style="margin-top:16px"><h3>הדף הציבורי שלי</h3>${p.photo?`<img class="jph" src="${esc(p.photo)}" alt="">`:""}<label>תמונה (JPG/PNG עד 1MB)</label><input type="file" id="pimg" accept="image/png,image/jpeg,image/webp"><label>תיאור אישי (עד 2000 תווים)</label><textarea name="bio" maxlength="2000">${esc(p.bio)}</textarea><label>זמינות</label><input name="a" value="${esc(p.avail)}"><button class="btn" type="submit">שמירה</button></form>`;
+  $("#pf").onsubmit=async e=>{e.preventDefault();let photo;const f=$("#pimg").files[0];if(f){if(f.size>1e6)return msg("התמונה גדולה מדי");photo={name:f.name,type:f.type,b64:await toB64(f)}}
+    try{await api({action:"judge_profile",avail:e.target.a.value,bio:e.target.bio.value,photo});await profileView();msg("נשמר. הדף הציבורי עודכן.",true)}catch(er){msg(er.message)}}}
 async function adminView(){
   const j=await api({action:"admin_overview"});
   const sel=(opts,cur)=>opts.map(o=>`<option ${o===cur?"selected":""}>${o}</option>`).join("");
