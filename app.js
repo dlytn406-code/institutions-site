@@ -8,14 +8,15 @@ async function submitForm(form, kind){
   try{
     const data={kind};
     for(const el of form.elements){
-      if(!el.name||el.type==="submit")continue;
+      if(!el.name||el.type==="submit"||el.type==="hidden")continue;
       if(el.type==="file"){
         data[el.name]=[];
         for(const f of el.files){if(f.size>MAX_FILE)throw new Error("קובץ גדול מדי: "+f.name+" (עד 4MB)");data[el.name].push({name:f.name,type:f.type,b64:await toB64(f)})}
-      }else if(el.type==="checkbox"){data[el.name]=el.checked}
+      }else if(el.type==="checkbox"&&el.dataset.group){if(el.checked)data[el.dataset.group]=(data[el.dataset.group]?data[el.dataset.group]+", ":"")+el.value}else if(el.type==="checkbox"){data[el.name]=el.checked}
       else if(el.type==="radio"){if(el.checked)data[el.name]=el.value}
       else data[el.name]=el.value;
     }
+    for(const g of new Set([...form.querySelectorAll("[data-group]")].map(x=>x.dataset.group)))if(!data[g])throw new Error("יש לסמן לפחות פריט אחד בכל רשימה");
     if(API_URL.startsWith("REPLACE"))throw new Error("האתר במצב ניסוי: החיבור לשרת טרם הוגדר.");
     const r=await fetch(API_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(data)});
     const j=await r.json();
