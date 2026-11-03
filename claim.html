@@ -1,0 +1,14 @@
+<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>הגשת תביעה | המכון למשפט עברי</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700&family=Heebo:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css"></head><body>
+<header><div class="wrap top"><a class="brand" href="index.html">המכון למשפט עברי<small>עמותה רשומה</small></a>
+<nav class="nav"><a href="index.html#institutions">מוסדות</a><a href="claim.html">הגשת תביעה</a><a href="join.html">הצטרפות כחבר</a><a href="judge.html">דיינים ובוררים</a></nav></div></header>
+<section><div class="wrap"><h2>הגשת תביעה</h2><p class="note">המערכת בודקת אוטומטית לפי מספרי הזהות אם הצדדים חברי העמותה, ומפנה את ההליך בהתאם. האתר בהרצת ניסוי.</p>
+<form class="f" data-kind="claim"><fieldset><legend>התובע</legend><label>שם מלא</label><input name="p_name" required><label>מספר תעודת זהות / מספר תאגיד</label><input name="p_id" required inputmode="numeric"><label>דוא"ל</label><input name="p_email" type="email" required><label>טלפון</label><input name="p_phone" required><label>כתובת מלאה כולל מיקוד</label><input name="p_addr" required><label>צילום תעודה מזהה</label><input name="p_idfile" type="file" accept=".jpg,.jpeg,.png,.pdf" required></fieldset>
+<fieldset><legend>הנתבע</legend><label>שם מלא</label><input name="d_name" required><label>מספר תעודת זהות / מספר תאגיד</label><input name="d_id" required inputmode="numeric"><label>כתובת מלאה כולל מיקוד</label><input name="d_addr" required><label>דוא"ל (אם ידוע)</label><input name="d_email" type="email"><label>טלפון (אם ידוע)</label><input name="d_phone"></fieldset>
+<fieldset><legend>התביעה</legend><label>הרקע לתביעה</label><textarea name="background" required></textarea><label>הסעד הנתבע</label><textarea name="relief" required></textarea><label>סכום (אם כספי) ודרך חישובו</label><input name="amount"><label>מסמכים תומכים</label><input name="docs" type="file" multiple></fieldset>
+<div class="chk"><input type="checkbox" name="consent" required><span>אני מצהיר שהפרטים נכונים ומסכים לתנאי השימוש ולמדיניות הפרטיות.</span></div>
+<button class="btn" type="submit">שליחת התביעה</button><div id="msg"></div></form></div></section>
+<footer><div class="wrap">© המכון למשפט עברי (ע"ר) · <a href="privacy.html">פרטיות ותנאי שימוש</a><br>האתר נמצא בהרצת ניסוי ואינו מקבל תיקים אמיתיים.</div></footer>
+<script src="app.js"></script></body></html>
