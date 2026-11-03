@@ -25,3 +25,8 @@ textarea{min-height:120px}fieldset{border:1px solid var(--line);border-radius:4p
 .note{background:#fbf3dc;border:1px solid #e3cf93;padding:12px 16px;border-radius:4px;font-size:16px;margin:0 0 22px}
 footer{background:var(--navy);color:#b9c4d4;padding:30px 0;font-size:15px;margin-top:40px}footer a{color:#d9c48f}
 @media(max-width:640px){.hero h1{font-size:32px}.nav a{margin-inline-start:12px}}
+.brand{display:flex;align-items:center;gap:12px}.brand img{display:block}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 20px}.tabs button{font-family:"Heebo",Arial,sans-serif;padding:9px 18px;border:1px solid var(--line);background:#fff;border-radius:4px;cursor:pointer;font-size:16px}.tabs button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+table{width:100%;border-collapse:collapse;background:#fff;font-size:15px;font-family:"Heebo",Arial,sans-serif}th,td{border:1px solid var(--line);padding:8px 10px;text-align:right;vertical-align:top}th{background:#efe9da}
+.pill{display:inline-block;padding:2px 10px;border-radius:12px;background:#efe9da;font-size:13px}.ev{border-inline-start:3px solid var(--gold);padding:6px 14px;margin:10px 0;background:#fff}.ev small{color:var(--mute)}
+.btn.sm{padding:6px 14px;font-size:14px;margin:2px}.rankrow{display:flex;gap:10px;align-items:center;margin:6px 0}.rankrow input{width:70px}
